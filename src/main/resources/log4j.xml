@@ -37,5 +37,25 @@
 		<priority value="warn" />
 		<appender-ref ref="console" />
 	</root>
+
+	<!-- from teacher 220704 -->
+	<logger name="jdbc.resultsettable">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.sqlonly">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.connection">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.audit">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.resultset">
+		<level value="off" />
+	</logger>
+	<logger name="jdbc.sqltiming">
+		<level value="off" />
+	</logger>
 	
 </log4j:configuration>

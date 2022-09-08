@@ -16,5 +16,8 @@
 			</form>
 		</div>
 	</div>
+	<div id="data_out"></div>
+
+
 </body>
 </html>

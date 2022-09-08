@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/main.css">
+<link rel="stylesheet" href="./resources/main.css">
 </head>
 <body>
 	<div class="logo_area">
-		<img src="resources/omca.jpg" width=100% height=100%>
+		<img src="./resources/omca.jpg" width=100% height=100%>
 	</div>
 	<div class="search_area">
 		<div id="home" class="menu_bar">홈</div>
-		<div id="champion_analysis" class="menu_bar">챔피언 분석 </div>
+		<div id="champion_analysis" class="menu_bar"><a href="#" id="analysis">챔피언 분석</a></div>
 		<div id="champion_synerge" class="menu_bar">듀오 시너지</div>
 		<div id="play_report" class="menu_bar" >플레이 리포트 </div>
 		<div id="multi_search" class="menu_bar">멀티서치 </div>
@@ -37,5 +37,7 @@
  });
 
 </script>
+
+
 
 </html>

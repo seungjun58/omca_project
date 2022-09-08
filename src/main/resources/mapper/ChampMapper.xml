@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.omca.dao.IChampDao">
+
+<!--  	<select id="get_champ_list" resultType="Champ">
+
+		select * from member where m_id = #{m_id}
+ 
+  	</select>-->
+
+	<select id="get_champ_list" resultType="Champ">
+		select * from TEST_INFO
+		<!--<![CDATA[
+			SELECT A.ID, A.NAME_EN, A.NAME_KR, round(w.win/A.PLAY*100,2) WIN, round(A.PLAY/1000,2) PICK, A.GOLD, round((A.KILLS+A.ASSISTS)/replace(A.DEATHS,0,1),2) KDA
+			FROM (SELECT CHAMPIONID AS ID, champion_name AS NAME_EN, champion_name_kr AS NAME_KR, count(*) as PLAY, ROUND(avg(GOLD),2) as GOLD,
+			             SUM(kills) as KILLS, SUM(assists) ASSISTS, SUM(deaths) DEATHS FROM BASIC_INFO WHERE LANE=#{lane} GROUP BY CHAMPIONID, champion_name, champion_name_kr) A
+			    JOIN (SELECT CHAMPIONID AS ID, count(*) as WIN FROM BASIC_INFO WHERE LANE=#{lane} AND WIN='True' GROUP BY CHAMPIONID) W ON A.id = W.id ORDER BY a.play desc
+		]]>-->
+	</select>
+</mapper>

@@ -12,6 +12,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	
+	public String newMain() {
+		logger.info("메인 페이지");
+		return "newMain";
+	}
+
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main() {
 		logger.info("메인 페이지");
 		return "main";

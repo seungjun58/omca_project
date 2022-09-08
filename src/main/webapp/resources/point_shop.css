@@ -1,0 +1,131 @@
+#main_func_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 1300px;
+}
+
+.point_shop_container {
+    color: black;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.point_shop_container > *,
+.point_shop_container > * > * {
+    border: 1px solid blue;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.psBox {
+    width: 1300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.psBox > * {
+    padding: 10px;
+}
+
+#psBox_1 {
+    height: 50px;
+    align-items: center;
+}
+
+#psBox_2 {
+    height: 300px;
+    justify-content: space-between;
+}
+
+#psBox_3 {
+    height: 50px;
+}
+
+#psBox_4 {
+    height: 550px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+#msBox_2 > * > * {
+    padding: 20px;
+}
+
+#msBox_1_title {
+    color: white;
+    background: black;
+}
+
+#msBox_2_box_1 {
+    margin-right: 20px;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+#msBox_2_box_2 {
+    flex: 6;
+}
+
+#msBox_3_box_1 {
+    flex: 4;
+    margin-right: 20px;
+}
+
+#msBox_3_box_2 {
+    flex: 2;
+    margin-right: 20px;
+}
+
+#msBox_3_box_3 {
+    flex: 4;
+}
+
+.msBox_4_boxes > * , .msBox_4_boxes > * > *{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#msBox_2_box_1_textArea {
+    flex: 9;
+    margin-bottom: 20px;
+    background-color: #464E54;
+    color: white;
+}
+
+#msBox_2_box_1_btn {
+    flex: 1;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: large;
+}
+
+#msBox_2_box_1_btn:hover {
+    color: black;
+    background-color: white;
+}
+/*
+.header_space {
+    flex: 5;
+    padding: 20px;
+}
+
+.login_container {
+    flex: 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}*/
