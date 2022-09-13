@@ -191,6 +191,13 @@ $(document).on("click", function(e){
     }
 })
 
-
-
+// 글쓰기
+//duo_search_insert
 // $('#dsBox_4').append('slkgjlas');
+
+// 데이터 가져오기
+//duo_search_select
+
+
+
+
