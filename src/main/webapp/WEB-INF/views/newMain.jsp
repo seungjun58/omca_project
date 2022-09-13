@@ -14,10 +14,11 @@
 <title>Template Web Site</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-    <link rel="stylesheet" href="resources/search_bar.css">
-    <link rel="stylesheet" href="resources/joinForm.css">
-    <link rel="stylesheet" href="resources/multi_search.css">
-    <link rel="stylesheet" href="resources/point_shop.css">
+    <link rel="stylesheet" href="resources/search_bar.css?after">
+    <link rel="stylesheet" href="resources/joinForm.css?after">
+    <link rel="stylesheet" href="resources/multi_search.css?after">
+    <link rel="stylesheet" href="resources/point_shop.css?after">
+    <link rel="stylesheet" href="resources/duo_search.css?after">
 
     <style>
         body {
@@ -92,8 +93,13 @@
             color: black;
         }
 
-        #container, #home_container, #main_func_container {
+        #container, #home_container {
             display: flex;
+            flex-wrap: wrap;
+        }
+
+        #main_func_container {
+            display: none;
             flex-wrap: wrap;
         }
 
@@ -417,9 +423,13 @@
     <h2>Footer</h2>
 </footer>
 
-
+<script src="resources/multi_search.js"></script>
+<script src="resources/point_shop2.js"></script>
+<script src="resources/duo_search.js"></script>
+<script src="resources/joinForm.js"></script>
 <script type="text/javascript">
-    const $main_func_container = $('#main_func_container')
+    const $main_func_container = $('#main_func_container');
+    const $contextPath = '${pageContext.request.contextPath}';
 
     $(document).ready(function () {
         const $h1 = $('<h1>')
@@ -435,20 +445,28 @@
             $('#join_container').hide(); //회원가입 중이었으면 어떻게 비울 것인지?
 
             let text = $(this).attr('id');
-            if (text == 'multi_search') {
-                $main_func_container.empty();
-                render_multi_search_window();
-            } else if(text == 'point_shop') {
-                $main_func_container.empty();
-                render_point_shop_window();
-            } else {
-                $h1.text(text);
-                const $testBtn = $('<input>').attr({'id':'testBtn','type':'button'}).data('text',text).val('TEST');
-                $main_func_container.empty();
-                $main_func_container.append($h1);
-                $main_func_container.append($testBtn);
-                $main_func_container.show();
+            $main_func_container.empty();
+            switch (text) {
+                case 'multi_search':
+                    render_multi_search_window();
+                    break;
+
+                case 'point_shop':
+                    render_point_shop_window();
+                    console.log("pointshop");
+                    break;
+
+                case 'duo_search':
+                    render_duo_search_window();
+                    break;
+
+                default :
+                    $h1.text(text);
+                    const $testBtn = $('<input>').attr({'id':'testBtn','type':'button'}).data('text',text).val('TEST');
+                    $main_func_container.append($h1);
+                    $main_func_container.append($testBtn);
             }
+            $main_func_container.show();
         });
 
         //Join button event
@@ -486,13 +504,8 @@
     $('.modal_layer').click(()=>{
         $("#modal").hide();
     })
-
-
-
 </script>
-<script src="resources/multi_search.js"></script>
-<script src="resources/point_shop.js"></script>
-<script src="resources/joinForm.js"></script>
+
 
 </body>
 </html>

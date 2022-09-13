@@ -1,0 +1,214 @@
+.duo_search_container {
+    color: black;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+#dsBox_3 > * , #dsBox_4 > * {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.dsBox {
+    width: 1300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dsBox > * {
+    padding: 10px;
+}
+
+#dsBox_1 {
+    height: 50px;
+    align-items: center;
+}
+
+#dsBox_2 {
+    height: 70px;
+    justify-content: flex-start;
+}
+
+#dsBox_3 {
+    height: 300px;
+    justify-content: center;
+}
+
+#dsBox_4 {
+    height: 550px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+/*#dsBox_2 > * > * {*/
+/*    padding: 20px;*/
+/*}*/
+
+#dsBox_1_title {
+    color: white;
+    background: black;
+    border-radius: 5px;
+}
+
+#dsBox_2_box_4 {
+    padding-left: 150px;
+}
+
+#dsBox_3_box_1 {
+    flex: 3;
+    margin-right: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+#dsBox_3_box_1 > * {
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#dsBox_3_box_2 {
+    flex: 7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+#dsBox_3_box_2 > * {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#dsBox_3_box_2_box_1 {
+    flex: 3;
+}
+
+#dsBox_3_box_2_box_2 {
+    flex: 7;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+#dsBox_3_box_2_box_1 > * {
+    margin: 0px 20px 0px 20px;
+}
+
+#dsBox_3_box_2_box_2_box_1 {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#dsBox_3_box_2_box_2_box_2 {
+    flex: 4;
+}
+
+#dsBox_3_box_2_box_2_box_1 > * {
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+}
+
+#dsBox_3_box_2_box_2_box_1_title {
+    flex: 2;
+}
+#dsBox_3_box_2_box_2_box_1_textArea {
+    flex: 8;
+}
+
+#dsBox_3_box_2_box_2_box_2_btn {
+    margin-bottom: 10px;
+}
+
+.dsBox_4_boxes > * , .dsBox_4_boxes > * > *{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#dsBox_2_box_1_textArea {
+    flex: 9;
+    margin-bottom: 20px;
+    background-color: #464E54;
+    color: white;
+}
+
+.dsBox_2_box_3_btns,
+#dsBox_2_box_4_btn,
+#dsBox_3_box_2_box_2_box_2_btn {
+    flex: 1;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: large;
+    padding: 15px;
+}
+
+.dsBox_2_box_3_btns:hover,
+#dsBox_2_box_4_btn:hover,
+#dsBox_3_box_2_box_2_box_2_btn:hover {
+    color: black;
+    background-color: white;
+}
+/*
+.header_space {
+    flex: 5;
+    padding: 20px;
+}
+
+.login_container {
+    flex: 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}*/
+
+
+
+/* select option box */
+.selectBox_selected_elements {
+    width: fit-content;
+    background: #FFFFFF no-repeat scroll;
+    border: 1px solid #b8b8b8;
+    overflow: hidden;
+    font-size: 18px;
+    color: #666666;
+    padding: 10px 0 10px 18px;
+    width: 155px;
+}
+
+.selectBoxes_elements_list{
+    list-style-type: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 18px;
+    color: #666666;
+    border: 1px solid #b8b8b8;
+    display: none;
+    position: absolute;
+    background: #FFFFFF;
+    border-top: none;
+}
+
+.selectBoxes_elements_list li{
+    padding: 10px 0 10px 18px;
+    width: 155px;
+}

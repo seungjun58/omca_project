@@ -1,7 +1,6 @@
-/*
-function render_point_shop_window2() {
+function render_point_shop_window() {
     <!-- 1. container for page -->
-    let $point_shop_container2 = $('<div>').addClass('point_shop_container');
+    let $point_shop_container = $('<div>').addClass('point_shop_container');
 
     <!-- 2. row boxes -->
     let $psBox_1 = $('<div>').addClass('psBox').attr('id','psBox_1');
@@ -166,13 +165,13 @@ function render_point_shop_window2() {
     <!--Box1 End-->
 
 
-    $point_shop_container2.append($psBox_1);
-    $point_shop_container2.append($psBox_2);
-    $point_shop_container2.append($psBox_3);
-    $point_shop_container2.append($psBox_4);
+    $point_shop_container.append($psBox_1);
+    $point_shop_container.append($psBox_2);
+    $point_shop_container.append($psBox_3);
+    $point_shop_container.append($psBox_4);
     <!--row Boxes End-->
 
-    $main_func_container.append($point_shop_container2);
+    $main_func_container.append($point_shop_container);
     <!-- create point shop page End-->
 }
 
@@ -185,4 +184,3 @@ function render_point_shop_window2() {
 //     alert(txt);
 // });
 
-*/

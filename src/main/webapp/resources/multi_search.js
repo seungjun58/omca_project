@@ -6,7 +6,7 @@ function render_multi_search_window() {
     let $multi_search_container = $('<div>').addClass('multi_search_container');
 
     <!-- 2. row boxes -->
-    let $msBox_1 = $('<div>').addClass('msBox').attr('id','msBox_1');
+    let $msBox_1 = $('<div>').addClass('msBox').attr({'id':'msBox_1'});
     let $msBox_2 = $('<div>').addClass('msBox').attr({'id':'msBox_2'});
     let $msBox_3 = $('<div>').addClass('msBox').attr({'id':'msBox_3'});
     let $msBox_4 = $('<div>').addClass('msBox').attr({'id':'msBox_4'});
@@ -23,7 +23,7 @@ function render_multi_search_window() {
 
     let $msBox_4_box_1 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_1'});
     let $msBox_4_box_2 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_2'});
-    let $msBox_4_box_3 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_3'});// 5명이 기본, 듀오 시너지 2명만 활용
+    let $msBox_4_box_3 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_3'});// 5명이 기본, 듀오 찾기 궁합(?)보기할 때 2명만 활용
     let $msBox_4_box_4 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_4'});
     let $msBox_4_box_5 = $('<div>').addClass('msBox_4_boxes').attr({'id':'msBox_4_box_5'});
 
@@ -259,10 +259,11 @@ function render_multi_search_window() {
 
 //[멀티 서치] 동적 버튼 이벤트
 $(document).on('click', '#msBox_2_box_1_btn', function (){ // (event name, element Id, function), element ID는 prefix # 주의!
-    let txt = $('#msBox_2_box_1_textArea').val();
+    let txt = $('#msBox_2_box_1_textArea').val().toString();
     $('#msBox_3').show();
     $('#msBox_4').show();
     $('#pre_temp_txt').hide();
+    txt.replace('님', 'a');
     alert(txt);
 });
 
