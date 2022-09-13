@@ -427,6 +427,7 @@
 <script src="resources/point_shop2.js"></script>
 <script src="resources/duo_search.js"></script>
 <script src="resources/joinForm.js"></script>
+
 <script type="text/javascript">
     const $main_func_container = $('#main_func_container');
     const $contextPath = '${pageContext.request.contextPath}';

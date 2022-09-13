@@ -90,6 +90,8 @@ function render_multi_search_window() {
     let $msBox_4_box_2_box_4_currentGame4 = $('<div>').addClass('msBox_4_box_2_box_4_currentGames').attr({'id':'msBox_4_box_2_box_4_currentGame4'});
     let $msBox_4_box_2_box_4_currentGame5 = $('<div>').addClass('msBox_4_box_2_box_4_currentGames').attr({'id':'msBox_4_box_2_box_4_currentGame5'});
 
+    
+    
     <!-- 5. Reversible game data SAMPLE 1-->
     let $msBox_4_box_1_box_1 = $('<div>').addClass('msBox_4_box_1_box').attr({'id':'msBox_4_box_1_box_1'});
     let $msBox_4_box_1_box_1_tier = $('<div>').addClass('msBox_4_box_1_box_tier').attr({'id':'msBox_4_box_1_box_1_tier'});
@@ -259,11 +261,13 @@ function render_multi_search_window() {
 
 //[멀티 서치] 동적 버튼 이벤트
 $(document).on('click', '#msBox_2_box_1_btn', function (){ // (event name, element Id, function), element ID는 prefix # 주의!
-    let txt = $('#msBox_2_box_1_textArea').val().toString();
+    
+    // 서치 박스 기능 클릭 이벤트 함수
+    
+    let txt = $('#msBox_2_box_1_textArea').val();
     $('#msBox_3').show();
     $('#msBox_4').show();
     $('#pre_temp_txt').hide();
-    txt.replace('님', 'a');
     alert(txt);
 });
 
