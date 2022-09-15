@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MICEGothic Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
 @media all and (max-width: 600px) {
     .multi_search_container {
         flex-direction: column;
@@ -8,7 +20,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 1300px;
+    height: 2000px;
 }
 
 .multi_search_container {
@@ -20,6 +32,10 @@
 
     align-items: center;
     justify-content: flex-start;
+    
+    font-family: 'MICEGothic Bold';
+    font-size : 16px;
+    
 
 }
 
@@ -55,7 +71,7 @@
 }
 
 #msBox_4 {
-    height: 550px;
+    height: 1100px;
     margin-bottom: 20px;
     justify-content: space-between;
 }
@@ -100,6 +116,11 @@
     text-align: center;
 }
 
+.msBox_4_boxes {
+    height: 1100px;
+    font-size : 22px;
+}
+
 #msBox_2_box_1_textArea {
     flex: 9;
     margin-bottom: 20px;
@@ -119,6 +140,71 @@
 #msBox_2_box_1_btn:hover {
     color: black;
     background-color: white;
+}
+
+.champImg {
+    width: 25px;
+    height: 25px;
+}
+
+.laneGameImg {
+    width: 25px;
+    height: 25px;
+}
+
+.msBox_4_box_1_box_4_currentGames{
+	display : -webkit-inline-box;
+	text-align: center;
+	width : 230px;
+	font-size : 16px;
+}
+
+.msBox_4_box_2_box_4_currentGames{
+	display : -webkit-inline-box;
+	text-align: center;
+	width : 230px; 
+	font-size : 16px;
+}
+
+.msBox_4_box_3_box_4_currentGames{
+	display : -webkit-inline-box;
+	text-align: center;
+	width : 230px; 
+	font-size : 16px;
+}
+
+.msBox_4_box_4_box_4_currentGames{
+	display : -webkit-inline-box;
+	text-align: center;
+	width : 230px; 
+	font-size : 16px;
+}
+
+.msBox_4_box_5_box_4_currentGames{
+	display : -webkit-inline-box;
+	text-align: center;
+	width : 230px;
+	font-size : 16px;
+}
+
+img {
+	margin : 5.8px;
+}
+
+.laneImg {
+	width : 40px;
+	height: 40px;
+	margin : 15px;
+}
+
+#msBox_3_box_3_mostLanes {
+	margin-top: 20px;
+	width : 500px;
+	height : 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+	align-items: center;
 }
 /*
 .header_space {
