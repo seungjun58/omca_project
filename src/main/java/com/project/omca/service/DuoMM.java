@@ -20,7 +20,7 @@ public class DuoMM {
         return dList;
     };
 
-    public boolean insert_duo(Duo duo) {
-        return dDao.insert_duo(duo);
+    public void insert_duo(Duo duo) {
+        dDao.insert_duo(duo);
     };
 }

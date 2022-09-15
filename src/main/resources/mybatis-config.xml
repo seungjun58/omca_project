@@ -7,10 +7,10 @@
 	<!-- <settings>기본값 설정</settings> -->
 	<typeAliases>
 		<!-- <typeAlias alias="Member" type="com.board.icia.bean.Member" /> -->
-<!--		<typeAlias alias="Member" type="com.project.omca.bean.Member"/>
+		<typeAlias alias="Member" type="com.project.omca.bean.Member"/>
 		<typeAlias alias="Champ" type="com.project.omca.bean.Champ"/>
-		<typeAlias alias="Duo" type="com.project.omca.bean.Duo"/>-->
-		 <package name="com.board.icia.bean"/>
+		<typeAlias alias="Duo" type="com.project.omca.bean.Duo"/>
+		 <!--<package name="com.board.icia.bean"/>-->
 	</typeAliases>
 	<!--  <typeHandlers></typeHandlers> -->
 </configuration>

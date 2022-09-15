@@ -23,6 +23,7 @@ public class RestController {
     @Autowired
     private ChampMM cm;
 
+    @Autowired
     private DuoMM dm;
 
     @PostMapping(value = "/analysisChamp", produces = "application/json;charset=utf-8")
@@ -58,9 +59,8 @@ public class RestController {
         List<Duo> result2 = null;
 
         dm.insert_duo(duo);
-        if (true) {
-            result2 = dm.get_duo_list();
-        }
+        result2 = dm.get_duo_list();
+
         logger.info("insert_duo 성공");
 
         return ResponseEntity.ok(result2);

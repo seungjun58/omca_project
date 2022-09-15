@@ -150,6 +150,7 @@ function render_duo_search_window() {
 
     $main_func_container.append($duo_search_container);
     <!-- create multi search page End-->
+    select_duo_elements();
 }
 
 //[듀오 찾기] 동적 버튼 이벤트
@@ -166,8 +167,6 @@ $(document).on('click', '#dsBox_2_box_4_btn', function (){ // (event name, eleme
     }
 });
 
-//selectBox_selected_elements // div default selected
-//selectBoxes_elements_list // ul
 /* 셀렉트박스 보이게 하기 */
 $(document).on("click", ".selectBox_selected_elements", function () {
     let id = $(this).attr('id');
@@ -191,13 +190,118 @@ $(document).on("click", function(e){
     }
 })
 
-// 글쓰기
-//duo_search_insert
-// $('#dsBox_4').append('slkgjlas');
-
 // 데이터 가져오기
-//duo_search_select
+$(document).on("click", "#dsBox_3_box_2_box_2_box_2_btn", function(){
 
+    let summoner_id = $('#dsBox_3_box_2_box_2_box_1_title').val();
+    let duo_contents = $('#dsBox_3_box_2_box_2_box_1_textArea').val();
+    let queue_id = $('#dsBox_3_box_2_box_1_selectBox_1_selected_element').text();
+    let duo_condition = $('#dsBox_3_box_2_box_1_selectBox_2_selected_element').text();
+    let my_tier = get_tier(summoner_id);
 
+    // 일단 출력
+    alert('summoner_id : ' + summoner_id +
+        '\nqueue_id : ' + queue_id +
+        '\nduo_condition : ' + duo_condition +
+        '\nduo_contents : ' + duo_contents +
+        '\nmy_tier : ' + my_tier
+    );
 
+    let duo_info_obj = {'summoner_id':summoner_id,
+                        'queue_id':queue_id,
+                        'duo_condition':duo_condition,
+                        'duo_contents':duo_contents,
+                        'my_tier':my_tier
+                        }
 
+    insert_duo_element(duo_info_obj);
+
+})
+
+function get_tier(sid) {
+    let str = "";
+    let high_champ_list = ['CHALLENGER','GRANDMASTER','MASTER']
+    let aa = {'sid' : sid};
+
+    $.ajax({
+        type : 'post',
+        url : 'http://127.0.0.1:5000/get_tier',
+        data : aa,
+        dataType : 'json',
+        async : false,
+        success : function(res) {
+            // let str = JSON.stringify(res);
+            if (res.tier in high_champ_list) {
+                str = res.tier;
+            } else {
+                str = res.tier + ' ' + res.rank;
+            }
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) { alert("XMLHttpRequest : "+XMLHttpRequest
+            +' textStatus : '+textStatus+' errorThrown : '+errorThrown);
+        }
+    })
+    console.log(str);
+    return str;
+};
+
+function insert_duo_element(duo_info_obj) {
+    $.ajax({
+        type : 'post',
+        url : 'duo_search_insert',
+        data : JSON.stringify(duo_info_obj),
+        dataType : 'json',
+        async : false,
+        success : function(res) {
+            // let str = JSON.stringify(res);
+            console.log(res);
+            render_duo_elements(res);
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) { alert("XMLHttpRequest : "+XMLHttpRequest
+            +' textStatus : '+textStatus+' errorThrown : '+errorThrown);
+        }
+    })
+}
+
+function select_duo_elements() {
+
+    $.ajax({
+        type : 'post',
+        url : 'duo_search_select',
+        contentType : 'application/json; charset=UTF-8',
+        async : false,
+        success : function(res) {
+            // let str = JSON.stringify(res);
+            console.log(res);
+            render_duo_elements(res);
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) { alert("XMLHttpRequest : "+XMLHttpRequest
+            +' textStatus : '+textStatus+' errorThrown : '+errorThrown);
+        }
+    })
+}
+
+function render_duo_elements(result_list) {
+    let sid = result_list.summoner_id;
+    let qid = result_list.queue_id;
+    let tier = result_list.my_tier;
+    let condition = result_list.duo_condition;
+    let contents = result_list.duo_contents;
+    if (condition == '모든 포지션 구함') {
+        // none
+    } else {
+        condition += ' 구함'
+    }
+
+    let title_text = ' '+qid+' '+tier+' '+condition;
+    let $contents_box = $('<div>').addClass('duo_contents_box').attr({'id':'d'});
+    let $title = $('<p>').text(title_text);
+    let $contents = $('<textarea>').val(contents);
+    let $writer_id = $('<p>').text(sid);
+
+    $contents_box.append($title);
+    $contents_box.append($contents);
+    $contents_box.append($writer_id);
+
+    $('#dsBox_4').append($contents_box);
+}

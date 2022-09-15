@@ -505,6 +505,8 @@
     $('.modal_layer').click(()=>{
         $("#modal").hide();
     })
+
+
 </script>
 
 
