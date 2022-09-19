@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@media all and (max-width: 600px) {
+    .ai_tier_prediction_container {
+        flex-direction: column;
+    }
+}
+.ai_tier_prediction_container {
+    color: black;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-start;
+    
+    font-family: 'SDSamliphopangche_Outline';
+    font-size : 24px;
+    
+    margin-top: 70px;
+    text-align: center;
+}
+
+.present_tier_img {
+	width: 150px;
+    height: 150px;
+    margin : 50px;
+}
+.predict_tier_img {
+	width: 150px;
+    height: 150px;
+    margin : 50px;
+}
+
+#aiBox_3_h2 {
+	margin: 40px;
+}
+#aiBox_5_h2 {
+	margin: 40px;
+}
+#loadingImg {
+	width: 100%;
+    height: 100%;
+}
+
+#aiBox_2_box_1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#aiBox_2_box_1_btn{
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-size: large;
+    width: 900px;
+    height: 50px;
+    font-family: 'SDSamliphopangche_Outline';
+}
+#aiBox_2_box_1_btn:hover {
+	color: black;
+    background-color: white;
+    font-family: 'SDSamliphopangche_Outline';
+}
+#aiBox_2_box_1_textArea {
+    margin: 50px 0px 20px 0px;
+    padding-top: 30px;
+    background-color: #464E54;
+        
+    width: 900px;
+    height: 60px;
+    
+    font-family: 'SDSamliphopangche_Outline';
+    text-align: center;
+    color: white;
+    font-size: 24px;   
+    font-weight: 700;
+}
+#aiBox_5{
+	margin-top : 100px;
+}

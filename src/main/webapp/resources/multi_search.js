@@ -77,7 +77,7 @@ function render_multi_search_window() {
          'src':'img_url'});
      let $msBox_4_box_5_box_2_smnrName = $('<p>').addClass('msBox_4_box_5_box_2_smnrName').attr({'id':'msBox_4_box_5_box_2_smnrName',
          'type':'text'});
-     let $msBox_4_box_5_box_2_KDA = $('<p>').addClass('msBox_4_box_5_box_2_KDA').attr({'id':'msBox_4_box_5_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
+     //let $msBox_4_box_5_box_2_KDA = $('<p>').addClass('msBox_4_box_5_box_2_KDA').attr({'id':'msBox_4_box_5_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
  
      let $msBox_4_box_5_box_3 = $('<div>').addClass('msBox_4_box_5_box').attr({'id':'msBox_4_box_5_box_3'});
      let $msBox_4_box_5_box_3_title = $('<h4>').addClass('msBox_4_box_5_box_3_title').attr({'id':'msBox_4_box_5_box_3_title'});
@@ -105,7 +105,7 @@ function render_multi_search_window() {
         'src':'img_url'});
     let $msBox_4_box_4_box_2_smnrName = $('<p>').addClass('msBox_4_box_4_box_2_smnrName').attr({'id':'msBox_4_box_4_box_2_smnrName',
         'type':'text'});
-    let $msBox_4_box_4_box_2_KDA = $('<p>').addClass('msBox_4_box_4_box_2_KDA').attr({'id':'msBox_4_box_4_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
+    //let $msBox_4_box_4_box_2_KDA = $('<p>').addClass('msBox_4_box_4_box_2_KDA').attr({'id':'msBox_4_box_4_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
 
     let $msBox_4_box_4_box_3 = $('<div>').addClass('msBox_4_box_4_box').attr({'id':'msBox_4_box_4_box_3'});
     let $msBox_4_box_4_box_3_title = $('<h4>').addClass('msBox_4_box_4_box_3_title').attr({'id':'msBox_4_box_4_box_3_title'});
@@ -131,7 +131,7 @@ function render_multi_search_window() {
         'src':'img_url'});
     let $msBox_4_box_3_box_2_smnrName = $('<p>').addClass('msBox_4_box_3_box_2_smnrName').attr({'id':'msBox_4_box_3_box_2_smnrName',
         'type':'text'});
-    let $msBox_4_box_3_box_2_KDA = $('<p>').addClass('msBox_4_box_3_box_2_KDA').attr({'id':'msBox_4_box_3_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
+    //let $msBox_4_box_3_box_2_KDA = $('<p>').addClass('msBox_4_box_3_box_2_KDA').attr({'id':'msBox_4_box_3_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
 
     let $msBox_4_box_3_box_3 = $('<div>').addClass('msBox_4_box_3_box').attr({'id':'msBox_4_box_3_box_3'});
     let $msBox_4_box_3_box_3_title = $('<h4>').addClass('msBox_4_box_3_box_3_title').attr({'id':'msBox_4_box_3_box_3_title'});
@@ -160,7 +160,7 @@ function render_multi_search_window() {
         'src':'img_url'});
     let $msBox_4_box_2_box_2_smnrName = $('<p>').addClass('msBox_4_box_2_box_2_smnrName').attr({'id':'msBox_4_box_2_box_2_smnrName',
         'type':'text'});
-    let $msBox_4_box_2_box_2_KDA = $('<p>').addClass('msBox_4_box_2_box_2_KDA').attr({'id':'msBox_4_box_2_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
+    //let $msBox_4_box_2_box_2_KDA = $('<p>').addClass('msBox_4_box_2_box_2_KDA').attr({'id':'msBox_4_box_2_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
 
     let $msBox_4_box_2_box_3 = $('<div>').addClass('msBox_4_box_2_box').attr({'id':'msBox_4_box_2_box_3'});
     let $msBox_4_box_2_box_3_title = $('<h4>').addClass('msBox_4_box_2_box_3_title').attr({'id':'msBox_4_box_2_box_3_title'});
@@ -188,7 +188,7 @@ function render_multi_search_window() {
         'src':'img_url'});
     let $msBox_4_box_1_box_2_smnrName = $('<p>').addClass('msBox_4_box_1_box_2_smnrName').attr({'id':'msBox_4_box_1_box_2_smnrName',
         'type':'text'});
-    let $msBox_4_box_1_box_2_KDA = $('<p>').addClass('msBox_4_box_1_box_2_KDA').attr({'id':'msBox_4_box_1_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
+    //let $msBox_4_box_1_box_2_KDA = $('<p>').addClass('msBox_4_box_1_box_2_KDA').attr({'id':'msBox_4_box_1_box_2_KDA','type':'text'}).text('00승 00패 00%승률');
 
     let $msBox_4_box_1_box_3 = $('<div>').addClass('msBox_4_box_1_box').attr({'id':'msBox_4_box_1_box_3'});
     let $msBox_4_box_1_box_3_title = $('<h4>').addClass('msBox_4_box_1_box_3_title').attr({'id':'msBox_4_box_1_box_3_title'});
@@ -372,12 +372,8 @@ function render_multi_search_window() {
     $msBox_4.append($msBox_4_box_3);
     $msBox_4.append($msBox_4_box_4);
     $msBox_4.append($msBox_4_box_5);
- 
 
-
-  
-                                                
-
+                                            
     $('<p>').text('This is the chemy graph').appendTo($msBox_3_box_1_graphBox_graph);
     $msBox_3_box_1_graphBox.append($msBox_3_box_1_graphBox_status);
     $msBox_3_box_1_graphBox.append($msBox_3_box_1_graphBox_graph);
@@ -453,6 +449,8 @@ function requestInfoFromPython(request) {
         contentType: 'application/json',
         success : function(res) {
             console.log("res",res);
+            console.log("나는 멀티서치야");
+            console.log("멀티서치 res의 타입",typeof res);
             const lane_img_address = "https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/";
    
             let tmp_top = 0;
@@ -624,12 +622,6 @@ function requestInfoFromPython(request) {
             $('<img>').addClass('laneImg').attr('src',lane_img_address+'icon-position-utility.png').appendTo($msBox_3_box_3_mostLanes);
             $('<p>').addClass('laneImg_p').attr('id','laneImg_utility').text(tmp_utility).appendTo($msBox_3_box_3_mostLanes);
 
-           
-            //$('<p>').addClass('laneImg_p').attr('id','laneImg_top').text(tmp_top).appendTo($msBox_3_box_3_mostLanes);
-            //$('<p>').addClass('laneImg_p').attr('id','laneImg_jungle').text(tmp_jungle).appendTo($msBox_3_box_3_mostLanes);
-            //$('<p>').addClass('laneImg_p').attr('id','laneImg_middle').text(tmp_middle).appendTo($msBox_3_box_3_mostLanes);
-            //$('<p>').addClass('laneImg_p').attr('id','laneImg_bottom').text(tmp_bottom).appendTo($msBox_3_box_3_mostLanes);
-            //$('<p>').addClass('laneImg_p').attr('id','laneImg_utility').text(tmp_utility).appendTo($msBox_3_box_3_mostLanes);
         },
         error : function(XMLHttpRequest, textStatus, errorThrown) {
             alert("XMLHttpRequest : " + XMLHttpRequest + ' textStatus : '
@@ -642,29 +634,24 @@ function make_map_of_summoners(summoners) {
     let tmp_map = new Map();
     	let temp = summoners.replace(/\n/gi, "").replace(/로비에/gi, "").replace(/님이/gi, "").replace(/참가하셨습니다./gi, "").replace(/\s\s\s/gi, ",")
 		.replace(/\s$/gi, "").replace(/\s$/gi, "").toLowerCase();
-		//console.log(summoners);
+
 		summoners_list = temp.split(",");
-		//console.log(summoners_list);
+
  		for (var i = 0; i < summoners_list.length; i++){
 			tmp_map.set("summoner"+((i+1).toString()),summoners_list[i]);
-			//console.log("summoner"+((i+1).toString()));
-			//console.log(summoners_list[i]);
-			//s_obj = {"summoner"+((i+1).toString()) : summoners_list[i]};
 		}
 		console.log(tmp_map);
 		requestInfoFromPython(JSON.stringify(Object.fromEntries(tmp_map)));
-}
+};
 
 function champion_img_url (CHAMPIONNAME) {
-		return 'https://ddragon.leagueoflegends.com/cdn/12.15.1/img/champion/'+CHAMPIONNAME+'.png';
-	}
+	return 'https://ddragon.leagueoflegends.com/cdn/12.15.1/img/champion/'+CHAMPIONNAME+'.png';
+};
+
 function lane_img_url (lane) {
-      return 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-'+lane.toLowerCase()+'.png';
-}
+  return 'https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-'+lane.toLowerCase()+'.png';
+};
 
-$(document).ready(function () {
-    
- 
- 
+//$(document).ready(function () {
 
-});
+//});

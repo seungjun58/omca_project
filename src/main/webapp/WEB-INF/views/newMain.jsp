@@ -13,12 +13,15 @@
 <meta charset="UTF-8">
 <title>Template Web Site</title>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 
     <link rel="stylesheet" href="resources/search_bar.css?after">
     <link rel="stylesheet" href="resources/joinForm.css?after">
     <link rel="stylesheet" href="resources/multi_search.css?after">
     <link rel="stylesheet" href="resources/point_shop.css?after">
     <link rel="stylesheet" href="resources/duo_search.css?after">
+	<link rel="stylesheet" href="resources/ai_tier_prediction.css?after">
+	
 
     <style>
         body {
@@ -258,7 +261,7 @@
     <a href="./">홈</a>
     <a href="#" class="nav-menu-btn" id="champion_analysis">챔피언 분석</a>
     <a href="#" class="nav-menu-btn" id="duo_synergy">듀오 시너지</a>
-    <a href="#" class="nav-menu-btn" id="play_report">플레이 리포트</a>
+    <a href="#" class="nav-menu-btn" id="ai_tier_prediction">AI 티어 예측</a>
     <a href="#" class="nav-menu-btn" id="multi_search">멀티서치</a>
     <a href="#" class="nav-menu-btn" id="point_shop">포인트샵</a>
     <a href="#" class="nav-menu-btn" id="duo_search">듀오찾기</a>
@@ -427,6 +430,7 @@
 <script src="resources/point_shop2.js"></script>
 <script src="resources/duo_search.js"></script>
 <script src="resources/joinForm.js"></script>
+<script src="resources/ai_tier_prediction.js"></script>
 
 <script type="text/javascript">
     const $main_func_container = $('#main_func_container');
@@ -460,7 +464,11 @@
                 case 'duo_search':
                     render_duo_search_window();
                     break;
-
+                
+                case 'ai_tier_prediction':
+                	render_ai_tier_prediction_window();
+                	break;
+                	
                 default :
                     $h1.text(text);
                     const $testBtn = $('<input>').attr({'id':'testBtn','type':'button'}).data('text',text).val('TEST');
@@ -492,7 +500,7 @@
     function show(e) {
         alert('hello~ '+e)
     }
-
+	
     //모달 버튼 이벤트
     $('#modal_opne_btn').click(()=>{
         $("#modal").show();
