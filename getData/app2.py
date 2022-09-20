@@ -19,9 +19,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-
 CORS(app)
-
 
 global api_key
 api_key = 'RGAPI-5e0111b2-217a-4486-aa6b-57475d923dcc'
@@ -30,21 +28,21 @@ global lol_api_key
 lol_api_key = 'RGAPI-7886342b-9cce-41c2-9c3a-d318fdd9004a'
 
 
-@app.route('/', methods = ["GET", "POST"])
+@app.route('/', methods=["GET", "POST"])
 def home():
     return 'hello'
 
 
-@app.route('/multi', methods = ["GET", "POST"])
+@app.route('/multi', methods=["GET", "POST"])
 def multi_search_request():
     global value
     if request.method == 'POST':
         value = request.json
         print(value)
         print(len(value))
-    tmp=[]
+    tmp = []
     for i in range(len(value)):
-        tmp.append(value['summoner'+str(i+1)])
+        tmp.append(value['summoner' + str(i + 1)])
     print(tmp)
     a = multi_search(tmp)
     print('a: ', a)
@@ -53,7 +51,7 @@ def multi_search_request():
     return b
 
 
-@app.route('/ai', methods = ["GET", "POST"])
+@app.route('/ai', methods=["GET", "POST"])
 def get_tier_data_tojs():
     global value
     if request.method == 'POST':
@@ -62,7 +60,7 @@ def get_tier_data_tojs():
         summonername = value["summoner"]
         encrypted_id = get_encrypted_id(summonername)
         tier_dict = get_tier(encrypted_id)
-        print("tier_dict",tier_dict)
+        print("tier_dict", tier_dict)
         tier_dict['predict_tier'] = ai_get_db_make_df(summonername)
         a = jsonify(tier_dict)
 
@@ -71,7 +69,7 @@ def get_tier_data_tojs():
     return a
 
 
-@app.route("/get_tier", methods = ["GET", "POST"])
+@app.route("/get_tier", methods=["GET", "POST"])
 def get_tier_by_lol_api():
     global value
     if request.method == 'POST':
@@ -86,7 +84,7 @@ def get_tier_by_lol_api():
     return a
 
 
-@app.route("/test", methods = ["GET", "POST"])
+@app.route("/test", methods=["GET", "POST"])
 def conn_test():
     global value
     if request.method == 'POST':
@@ -102,7 +100,7 @@ def conn_test():
     return w
 
 
-@app.route("/zz", methods = ["GET", "POST"])
+@app.route("/zz", methods=["GET", "POST"])
 def conn_test1():
     global value
 
@@ -131,7 +129,7 @@ def conn_test1():
     return d
 
 
-@app.route("/synergy", methods = ["GET", "POST"])
+@app.route("/synergy", methods=["GET", "POST"])
 def conn_test2():
     global value
 
@@ -201,10 +199,10 @@ def db_close():
         print(e)
 
 
-def get_avg_value (i ,df, tier, lane):
-    col_name=df.columns[i+2]
-    tier_tmp_df = df[df['TIER']==tier.upper()]
-    lane_tmp_df = tier_tmp_df[tier_tmp_df['TEAMPOSITION']==lane.upper()]
+def get_avg_value(i, df, tier, lane):
+    col_name = df.columns[i + 2]
+    tier_tmp_df = df[df['TIER'] == tier.upper()]
+    lane_tmp_df = tier_tmp_df[tier_tmp_df['TEAMPOSITION'] == lane.upper()]
     return lane_tmp_df.iloc[0][col_name]
 
 
@@ -218,16 +216,16 @@ def get_encrypted_id(summonername):
 def get_tier(encrypted_id):
     url = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/" + encrypted_id + "?api_key=" + lol_api_key
     res = requests.get(url).json()
-    res_dict = {'tier':res[0]['tier'],'rank':res[0]['rank']}
+    res_dict = {'tier': res[0]['tier'], 'rank': res[0]['rank']}
     return res_dict
 
 
 def ai_get_db_make_df(summonername):
     query = (
-            f' select * from match '
-            f' where gameid IN (select gameid from match '
-            f' where summonername = \'{summonername}\') ORDER BY GAMEID '
-            )
+        f' select * from match '
+        f' where gameid IN (select gameid from match '
+        f' where summonername = \'{summonername}\') ORDER BY GAMEID '
+    )
     db_open()
     df = sql_execute(query)
     db_close()
@@ -244,7 +242,7 @@ def multi_search(summoner_list):
 
         temp_dict = {}
         db_open()
-        #db_open_local()
+        # db_open_local()
         query = (
             f'select gameid,summonername,tier,teamposition, '
             f'ROUND(rc.gold/(rc.gameduration/60)) as gold_per_min, '
@@ -286,7 +284,9 @@ def multi_search(summoner_list):
                          'GOLD_DIF': str(summoner_df['GOLD_DIF'].mean()),
                          'DEALT_DIF': str(summoner_df['DEALT_DIF'].mean())}
 
-        game_info_df = summoner_df[['GAMEID', 'TEAMPOSITION', 'GAMEENDTIMESTAMP', 'G15', 'KILLS', 'DEATHS', 'ASSISTS', 'CHAMP_NAME_KR','CHAMPIONNAME','WIN']]
+        game_info_df = summoner_df[
+            ['GAMEID', 'TEAMPOSITION', 'GAMEENDTIMESTAMP', 'G15', 'KILLS', 'DEATHS', 'ASSISTS', 'CHAMP_NAME_KR',
+             'CHAMPIONNAME', 'WIN']]
         temp_list = []
         for i in range(len(game_info_df)):
             temp_dict2 = {}
@@ -366,7 +366,9 @@ def make_result_of_test_df(df):
         l += result_df[tier_columns[0]][i]
         m += result_df[tier_columns[1]][i]
         h += result_df[tier_columns[2]][i]
+
         res_temp = max(h, m, l)
+
     if h == res_temp:
         result = tier_columns[2]
     elif m == res_temp:
@@ -374,6 +376,7 @@ def make_result_of_test_df(df):
     else:
         result = tier_columns[0]
     return result
+
 
 def get_puuid(gameid):
     url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + gameid + "?api_key=" + api_key
@@ -398,70 +401,71 @@ def get_matches_timelines(match_ids):
         # url4 = 'https://asia.api.riotgames.com/lol/match/v5/matches/' + s + '/timeline?api_key=' + api_key
         # res4 = requests.get(url4).json()
         lst.append([s, res3])
-        lstpd = pd.DataFrame(lst, columns = ['gameId','matches'])
+        lstpd = pd.DataFrame(lst, columns=['gameId', 'matches'])
     return lstpd
 
 
 def get_match_timeline_df(df):
+
+    key_list = ['teamId','summonerName','win','teamPosition','championName','championId'
+                'excep1',
+                'kills','deaths','assists'
+                'excep2',
+                'summoner1Id','summoner2Id','item0','item1','item2','item3','item4','item5','item6',
+                'champLevel','goldEarned',
+                'excep3'
+                'visionWardsBoughtInGame','wardsPlaced','wardsKilled',
+                'totalDamageDealtToChampions','totalDamageTaken']
+
+    df_elem = df.iloc[i]
+    matches = df_elem['matches']
+    info = matches['info']
+    participants = info['participants']
+
     df_creater = []
     for i in range(len(df)):
         for j in range(10):
-            tmp = []
-            tmp.append(df.iloc[i].gameId)
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['teamId'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['summonerName'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['win'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['teamPosition'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['championName'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['championId'])
-            tmp.append(df.iloc[i]['matches']['info']['queueId'])
-            tmp.append(round(df.iloc[i]['matches']['info']['participants'][j]['challenges']['kda'], 2))
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['kills'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['deaths'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['assists'])
-            if (df.iloc[i]['matches']['info']['participants'][j]['teamId'] == 100):
-                tmp.append((df.iloc[i]['matches']['info']['participants'][j]['kills'] +
-                            df.iloc[i]['matches']['info']['participants'][j]['assists']) /
-                           df.iloc[i]['matches']['info']['teams'][0]['objectives']['champion']['kills'])
-            else:
-                tmp.append((df.iloc[i]['matches']['info']['participants'][j]['kills'] +
-                            df.iloc[i]['matches']['info']['participants'][j]['assists']) /
-                           df.iloc[i]['matches']['info']['teams'][1]['objectives']['champion']['kills'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['perks']['styles'][0]['selections'][0]['perk'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['perks']['styles'][1]['style'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['summoner1Id'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['summoner2Id'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item0'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item1'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item2'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item3'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item4'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item5'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['item6'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['champLevel'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['goldEarned'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['totalMinionsKilled'] +
-                       df.iloc[i]['matches']['info']['participants'][j]['neutralMinionsKilled'])
-            tmp.append(round((df.iloc[i]['matches']['info']['participants'][j]['totalMinionsKilled'] +
-                              df.iloc[i]['matches']['info']['participants'][j]['neutralMinionsKilled']) / (
-                                         df.iloc[i]['matches']['info']['gameDuration'] / 60), 1))
-            tmp.append(int(df.iloc[i]['matches']['info']['gameDuration'] / 60))
-            tmp.append(df.iloc[i]['matches']['info']['gameDuration'] - (
-                        int(df.iloc[i]['matches']['info']['gameDuration'] / 60) * 60))
-            start = int(df.iloc[i].matches['info']['gameStartTimestamp']) / 1000
-            end = int(df.iloc[i].matches['info']['gameEndTimestamp']) / 1000
-            tmp.append(datetime.utcfromtimestamp(start + (60 * 60 * 9)).strftime('%Y-%m-%d %H:%M:%S'))
-            tmp.append(datetime.utcfromtimestamp(end + (60 * 60 * 9)).strftime('%Y-%m-%d %H:%M:%S'))
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['visionWardsBoughtInGame'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['wardsPlaced'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['wardsKilled'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['totalDamageDealtToChampions'])
-            tmp.append(df.iloc[i]['matches']['info']['participants'][j]['totalDamageTaken'])
+            parts = participants[j]
+            tmp = [df_elem['gameId']]
+
+            for k in key_list:
+
+                if k == 'excep1':
+                    tmp.append(info['queueId'])
+                    tmp.append(round(parts['challenges']['kda'], 2))
+
+                elif k == 'excep2':
+                    team_no = 1
+                    if (parts['teamId'] == 100):
+                        team_no = 0
+                    tmp.append((parts['kills'] +
+                                parts['assists']) /
+                                info['teams'][team_no]['objectives']['champion']['kills'])
+                    tmp.append(parts['perks']['styles'][0]['selections'][0]['perk'])
+                    tmp.append(parts['perks']['styles'][1]['style'])
+
+                elif k == 'excep3':
+                    game_dur_minute = info['gameDuration'] / 60
+                    tmp.append(parts['totalMinionsKilled'] + parts['neutralMinionsKilled'])
+                    tmp.append(round((parts['totalMinionsKilled'] +
+                                    parts['neutralMinionsKilled']) / (
+                                            game_dur_minute), 1))
+                    tmp.append(int(game_dur_minute))
+                    tmp.append(info['gameDuration'] - (int(game_dur_minute) * 60))
+                    start = int(info['gameStartTimestamp']) / 1000
+                    end = int(info['gameEndTimestamp']) / 1000
+                    tmp.append(datetime.utcfromtimestamp(start + (60 * 60 * 9)).strftime('%Y-%m-%d %H:%M:%S'))
+                    tmp.append(datetime.utcfromtimestamp(end + (60 * 60 * 9)).strftime('%Y-%m-%d %H:%M:%S'))
+
+                else:
+                    tmp.append(parts[k])
+
             df_creater.append(tmp)
 
     columns = ['GAMEID', 'TEAMID', 'SUMMONERNAME', 'WIN', 'TEAMPOSITION', 'CHAMPIONNAME', 'CHAMP_ID', 'QUEUE_ID',
                'KDA', 'KILLS', 'DEATHS', 'ASSISTS', 'INVOLVEMENTRATE', 'RUNE_MAIN_ID', 'RUNE_SUB_STYLE_ID',
-               'SPELL_ID_D', 'SPELL_ID_F', 'ITEM_ID', 'ITEM_ID2', 'ITEM_ID3', 'ITEM_ID4', 'ITEM_ID5', 'ITEM_ID6', 'ITEM_ID7',
+               'SPELL_ID_D', 'SPELL_ID_F', 'ITEM_ID', 'ITEM_ID2', 'ITEM_ID3', 'ITEM_ID4', 'ITEM_ID5', 'ITEM_ID6',
+               'ITEM_ID7',
                'CHAMPLEVEL', 'GOLD', 'CS', 'CPM', 'MINUTE', 'SECOND', 'GAMESTARTTIMESTAMP', 'GAMEENDTIMESTAMP',
                'VISIONWARDSBOUGHTINGAME', 'WARDSPLACED', 'WARDSKILLED', 'TOTALDAMAGEDEALTTOCHAMPIONS',
                'TOTALDAMAGETAKEN']
@@ -477,8 +481,8 @@ def make_str_time_from_timestamp(timestamp):
 
 
 def make_str_time_from_df(df):
-    df['GAMESTARTTIMESTAMP'] = df.apply(lambda x : make_str_time_from_timestamp(x['GAMESTARTTIMESTAMP']/1000) , axis = 1)
-    df['GAMEENDTIMESTAMP'] = df.apply(lambda x : make_str_time_from_timestamp(x['GAMEENDTIMESTAMP']/1000) , axis = 1)
+    df['GAMESTARTTIMESTAMP'] = df.apply(lambda x: make_str_time_from_timestamp(x['GAMESTARTTIMESTAMP'] / 1000), axis=1)
+    df['GAMEENDTIMESTAMP'] = df.apply(lambda x: make_str_time_from_timestamp(x['GAMEENDTIMESTAMP'] / 1000), axis=1)
     return df
 
 
@@ -498,6 +502,3 @@ def make_list_of_dict(df):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
